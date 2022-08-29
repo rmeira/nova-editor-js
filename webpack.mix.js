@@ -1,9 +1,5 @@
-const mix = require('laravel-mix');
-
-require('./nova.mix')
+let mix = require('laravel-mix')
 
 mix.setPublicPath('dist')
     .js('resources/js/index.js', 'js/field.js')
-    .vue({ version: 3 })
-    .css('resources/css/field.css', 'css/field.css')
-    .nova('advoor/nova-editor-js');
+    .sass('resources/sass/field.scss', 'css')

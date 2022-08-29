@@ -36,6 +36,7 @@ return [
         'image' => [
             'activated' => true,
             'shortcut' => 'CMD+SHIFT+I',
+            'validation' => 'required|mimes:jpeg,png,jpg',
             'path' => 'public/images',
             'disk' => 'local',
             'alterations' => [
@@ -207,7 +208,6 @@ return [
                         ],
                         'image' => [
                             'type' => 'array',
-                            'required' => false,
                             'data' => [
                                 'url' => [
                                     'type' => 'string',
@@ -242,10 +242,6 @@ return [
 
             ],
             'table' => [
-                'withHeadings' => [
-                    'type' => 'boolean',
-                    'required' => false
-                ],
                 'content' => [
                     'type' => 'array',
                     'data' => [

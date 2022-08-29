@@ -1,9 +1,10 @@
 const EditorJS = require('@editorjs/editorjs');
 
 export default class NovaEditorJS {
+
     constructor() {
         this.defaultConfigObject = {
-            tools: {},
+            tools: {}
         };
 
         this.persistentConfigObject = {};
@@ -33,7 +34,8 @@ export default class NovaEditorJS {
     }
 
     getInstance(config, field) {
-        const editorConfig = _.merge({}, this.defaultConfigObject, config);
+
+        let editorConfig = _.merge({}, this.defaultConfigObject, config);
         const fieldObject = _.cloneDeep(field);
 
         // Plugins should not modify the field config.
@@ -42,12 +44,12 @@ export default class NovaEditorJS {
         Object.freeze(fieldObject);
 
         // We boot each block plugin by passing the editorConfig and the fieldObject
-        this.bootingCallbacks.forEach((callback) => callback(editorConfig, fieldObject));
+        this.bootingCallbacks.forEach(callback => callback(editorConfig, fieldObject));
 
         // We apply the persistent config and return the editor instance
         return new EditorJS(
-            _.merge(editorConfig, this.persistentConfigObject),
-        );
+            _.merge(editorConfig, this.persistentConfigObject)
+        )
     }
 
     /**
@@ -84,4 +86,5 @@ export default class NovaEditorJS {
         // root values with the spread operator
         this.persistentConfigObject = _.merge(this.persistentConfigObject, config);
     }
+
 }

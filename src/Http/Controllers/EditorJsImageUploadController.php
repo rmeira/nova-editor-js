@@ -20,7 +20,7 @@ class EditorJsImageUploadController extends Controller
     public function file(NovaRequest $request)
     {
         $validator = Validator::make($request->all(), [
-            'image' => 'required|image',
+            'image' => config('nova-editor-js.toolSettings.image.validation'),
         ]);
 
         if ($validator->fails()) {
